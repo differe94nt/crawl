@@ -1,2 +1,10 @@
-def crawl_web(url):
-    get_page(url)
+def crawl_web(seed):
+    tocrawl=[seed]
+    crawled=[]
+    while tocrawl:
+        url=tocrawl.pop()
+        page=get_page(url)
+        tocrawl+=get_links(page)
+        crawled+=url
+    return crawled
+print crawl_web('http://msn.com')
