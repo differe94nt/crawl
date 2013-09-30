@@ -1,7 +1,7 @@
 def get_all_links(page):
     links=[]
     while True:
-        link,endpos=get_next_target(page)
+        link,endpos=get_next_link(page)
         if link:
             links=links+link
             page=page[endpos:]
