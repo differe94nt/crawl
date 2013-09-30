@@ -1,0 +1,2 @@
+def crawl_web(url):
+    get_page(url)
