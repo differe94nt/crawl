@@ -15,17 +15,18 @@ def get_next_link(page):
 def get_all_links(page):
     links=[]
     while True:
-        link,endpos=get_next_target(page)
+        link,endpos=get_next_link(page)
         if link:
-            links=links+link
+            links.append(link)
             page=page[endpos:]
         else:return links
 
-tocrawl=['http://msn.com']
+tocrawl=['http://msn.com.tw']
 crawled=[]
 while tocrawl:
     link=tocrawl.pop()
     page=get_page(link)
-    tocrawl.append(get_all_links(page))
+    tocrawl+=get_all_links(page)
     crawled.append(link)
+    if len(crawled)>9:break
 print crawled
