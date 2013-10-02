@@ -1,4 +1,6 @@
 from urllib import urlopen
+from re import findall
+#findall(ur'[\u4E00-\u9FA5]',u'')
 
 def get_page(url):
     try:return urlopen(url).read()
