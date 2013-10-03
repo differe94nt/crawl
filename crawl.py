@@ -1,6 +1,7 @@
 from urllib import urlopen
+from nltk import clean_html
 from re import findall
-#findall(ur'[\u4E00-\u9FA5]',u'')
+#findall(ur'[\u4E00-\u9FA5]',page)
 
 def get_page(url):
     try:return urlopen(url).read()
@@ -29,6 +30,8 @@ while tocrawl:
     link=tocrawl.pop()
     page=get_page(link)
     tocrawl+=get_all_links(page)
+    page=clean_html(page)
+    if len(page)<>len(page.decode('utf8')):print page
     crawled.append(link)
     if len(crawled)>9:break
 print crawled
